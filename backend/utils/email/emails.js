@@ -1,4 +1,4 @@
-import sendMail from "./emailService.js";
+import sendMail from "./sendEmail.js";
 import {
   VERIFICATION_EMAIL_TEMPLATE,
   PASSWORD_RESET_REQUEST_TEMPLATE,

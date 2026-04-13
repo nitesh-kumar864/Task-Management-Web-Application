@@ -107,29 +107,28 @@ logout: async () => {
   },
 
   // ---------------- CHECK AUTH ----------------
-  checkAuth: async () => {
-    await new Promise((resolve)=> setTimeout(resolve, 2000));
-    set({ isCheckingAuth: true, error: null });
+checkAuth: async () => {
+  set({ isCheckingAuth: true, error: null });
 
-    try {
-      const response = await axios.get(`${API_URL}/check-auth`, {
-        withCredentials: true,
-      });
+  try {
+    const response = await axios.get(`${API_URL}/check-auth`, {
+      withCredentials: true,
+    });
 
-      set({
-        user: response.data.user,
-        isAuthenticated: false,
-        isCheckingAuth: false,
-      });
-    } catch (error) {
-      set({
-        user: null,
-        error: null,
-        isCheckingAuth: false,
-        isAuthenticated: false,
-      });
-    }
-  },
+    set({
+      user: response.data.user,
+      isAuthenticated: true,   
+      isCheckingAuth: false,
+    });
+  } catch (error) {
+    set({
+      user: null,
+      error: null,
+      isCheckingAuth: false,
+      isAuthenticated: false,
+    });
+  }
+},
 
 	forgotPassword: async (email) => {
 		set({ isLoading: true, error: null });

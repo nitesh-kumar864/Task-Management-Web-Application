@@ -41,6 +41,8 @@ export const signup = async (req, res) => {
       });
     }
 
+
+
     const userAlreadyExists = await User.findOne({ normalizedEmail });
     if (userAlreadyExists) {
       return res.status(400).json({
@@ -63,9 +65,13 @@ export const signup = async (req, res) => {
     await user.save();
 
     // Create cookie
-    generateTokenAndSetCookies(res, user._id);
+    generateTokenAndSetCookies(res, user);
 
-    await sendVerificationEmail(user.email, user.name, verificationToken);
+    try {
+      await sendVerificationEmail(user.email, user.name, verificationToken);
+    } catch (err) {
+      console.log("Email failed:", err.message);
+    }
 
     res.status(201).json({
       success: true,
@@ -287,6 +293,7 @@ export const resetPassword = async (req, res) => {
 export const checkAuth = async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password");
+
 
     if (!user) {
       return res.status(404).json({ success: false, message: "User not found" });
