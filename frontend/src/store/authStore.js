@@ -3,7 +3,7 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL + "/auth";
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -108,24 +108,21 @@ logout: async () => {
 
   // ---------------- CHECK AUTH ----------------
 checkAuth: async () => {
-  set({ isCheckingAuth: true, error: null });
+  set({ isCheckingAuth: true });
 
   try {
-    const response = await axios.get(`${API_URL}/check-auth`, {
-      withCredentials: true,
-    });
+    const response = await axios.get(`${API_URL}/check-auth`);
 
     set({
       user: response.data.user,
-      isAuthenticated: true,   
+      isAuthenticated: true,
       isCheckingAuth: false,
     });
   } catch (error) {
     set({
       user: null,
-      error: null,
-      isCheckingAuth: false,
       isAuthenticated: false,
+      isCheckingAuth: false,
     });
   }
 },

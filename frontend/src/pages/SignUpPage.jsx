@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Input from "../components/Input";
 import toast from "react-hot-toast";
-import { Loader, Lock, Mail, User } from "lucide-react";
+import { Loader, Lock, Mail, User, Eye,EyeOff } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PasswordStrengthMeter from "../components/PasswordStrengthMeter";
@@ -138,7 +138,7 @@ const SignUpPage = () => {
 							className="absolute right-4 top-1/2 -translate-y-1/2 
 							text-sm text-emerald-400 cursor-pointer select-none"
 						>
-							{showPassword ? "Hide" : "Show"}
+							  {showPassword ? <EyeOff size={20 } /> : < Eye size={20} />}
 						</span>
 					</div>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, Eye,EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import { useAuthStore } from "../store/authStore";
@@ -103,7 +103,7 @@ const LoginPage = () => {
 							className="absolute right-4 top-1/2 -translate-y-1/2 
 							text-sm text-emerald-400 cursor-pointer select-none"
 						>
-							{showPassword ? "Hide" : "Show"}
+							  {showPassword ? <EyeOff size={20 } /> : < Eye size={20} />}
 						</span>
 					</div>
 

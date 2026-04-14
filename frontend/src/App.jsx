@@ -7,7 +7,8 @@ import { Routes, Route } from "react-router-dom";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
 import Dashboard from "./pages/Dashboard";
-import LoadingSpinner from "./components/LodingSpinner";
+import Profile from "./pages/Profile";
+import Layout from "./components/Layout";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -20,9 +21,6 @@ export default function App() {
     checkAuth();
   }, [checkAuth]);
 
-  if (isCheckingAuth) {
-    return <LoadingSpinner />;
-  }
 
   return (
     <>
@@ -35,10 +33,24 @@ export default function App() {
 
         <Routes>
           <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Layout >
+                  <Profile />
+                </Layout>
+
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Layout >
+                  <Dashboard />
+                </Layout>
+
               </ProtectedRoute>
             }
           />
