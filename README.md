@@ -5,11 +5,34 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-A **secure and scalable MERN Authentication System** built using **MongoDB, Express.js, React (Vite), and Node.js**.  
-This project implements real-world authentication workflows including **email verification (OTP), protected routes, password reset, and secure JWT handling using HTTP-only cookies**.
+A **secure, scalable, and production-ready MERN Authentication System** built using **MongoDB, Express.js, React (Vite), and Node.js**.
 
-Designed with **production-grade security practices** and clean architecture.
+This project implements real-world authentication workflows including:
 
+- 🔐 **Email Verification (OTP)**
+- 🔑 **Secure Login & Signup**
+- 🔄 **Password Reset Flow**
+- 🛡️ **Protected Routes**
+- 🍪 **JWT Authentication using HTTP-only cookies**
+
+---
+
+## 📋 Task Management Features
+
+- **Add Tasks:** Create new tasks with title and description  
+-  **Update Tasks:** Edit task details and update status  
+-  **Delete Tasks:** Remove tasks instantly  
+-  **Toggle Status:** Mark tasks as **completed / pending**  
+-  **Search Tasks:** Filter tasks by title in real-time  
+-  **Filter Tasks:** View tasks by:
+  - All Tasks  
+  - Completed Tasks  
+  - Pending Tasks  
+- **Task Statistics Dashboard**
+
+---
+
+Designed with **best security practices**, clean architecture, and optimized performance for real-world applications.
 
 
 ## 🌐 Live Demo
@@ -19,6 +42,44 @@ Designed with **production-grade security practices** and clean architecture.
 _Deployed on Render with environment-based configuration._
 
 ---
+
+
+## 📸 Screenshots
+
+
+
+### 🔐 Login Page
+<p align="center">
+  <img src="screenshots/login page.png" width="80%"/>
+</p>
+<p align="center"><i>Secure login interface with validation and authentication.</i></p>
+
+---
+
+### 📝 Signup Page
+<p align="center">
+  <img src="screenshots/signup.png" width="80%"/>
+</p>
+<p align="center"><i>Create a new account with email verification.</i></p>
+
+---
+
+### 🔑 Forgot Password Page
+<p align="center">
+  <img src="screenshots/forgetPassword.png" width="80%"/>
+</p>
+<p align="center"><i>Reset your password securely via email.</i></p>
+
+---
+
+### 🏠 Dashboard Page
+<p align="center">
+  <img src="screenshots/dashboard.png" width="80%"/>
+</p>
+<p align="center"><i>Manage tasks efficiently with search, filters, and task actions.</i></p>
+
+
+
 
 ## ✨ Features
 

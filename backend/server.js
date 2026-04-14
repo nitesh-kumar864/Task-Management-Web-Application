@@ -1,9 +1,12 @@
 import express from "express";
 import { connectDB } from "./db/connectDb.js";
 import dotenv from "dotenv";
-import authRoute from "./routes/authRoute.js";
 import cookieParser from "cookie-parser";
 import cors from 'cors';
+
+
+import authRoute from "./routes/authRoute.js";
+import taskRoute from './routes/taskRoute.js';
 
 dotenv.config();
 
@@ -28,6 +31,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoute);
+app.use("/api/tasks",taskRoute);
 
 app.listen(PORT, () => {
     connectDB(); 
