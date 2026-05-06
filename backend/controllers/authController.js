@@ -43,7 +43,7 @@ export const signup = async (req, res) => {
 
 
 
-    const userAlreadyExists = await User.findOne({ normalizedEmail });
+    const userAlreadyExists = await User.findOne({ email: normalizedEmail  });
     if (userAlreadyExists) {
       return res.status(400).json({
         success: false,
@@ -120,7 +120,7 @@ export const verifyEmail = async (req, res) => {
     user.verificationTokenExpiresAt = undefined;
     await user.save();
 
-    generateTokenAndSetCookies(res, user._id);
+    generateTokenAndSetCookies(res, user);
 
     return res.status(200).json({
       success: true,
@@ -152,7 +152,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid email or password" });
     }
 
-    generateTokenAndSetCookies(res, user._id);
+    generateTokenAndSetCookies(res, user);
 
     user.lastLogin = new Date();
     await user.save();
@@ -177,7 +177,12 @@ export const login = async (req, res) => {
 
 /* -------------------------LOGOUT---------------------------- */
 export const logout = async (req, res) => {
-  res.clearCookie("token");
+res.clearCookie("token", {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  path: "/",
+});
   return res.status(200).json({
     success: true,
     message: "Logged out successfully",
